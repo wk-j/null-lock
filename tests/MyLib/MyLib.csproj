@@ -2,6 +2,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\NullLock\NullLock.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+  </ItemGroup>
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <CodeAnalysisRuleSet>$(ProjectDir)global.ruleset</CodeAnalysisRuleSet>
