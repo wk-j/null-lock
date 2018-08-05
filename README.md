@@ -8,13 +8,13 @@ static void LockNull() {
 }
 ```
 
-Installation
+## Installation
 
 ```bash
 dotnet tool install -g wk.NullLock
 ```
 
-Usage
+## Usage
 
 ```bash
 $ wk-null-lock-analyzer tests/MyApp/MyApp.csproj
