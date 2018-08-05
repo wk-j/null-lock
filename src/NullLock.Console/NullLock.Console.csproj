@@ -3,6 +3,10 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <LangVersion>7.3</LangVersion>
+    <PackAsTool>true</PackAsTool>
+    <Version>0.1.0</Version>
+    <ToolCommandName>wk-null-lock-analyzer</ToolCommandName>
+    <PackageId>wk.NullLockAnalyzer</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

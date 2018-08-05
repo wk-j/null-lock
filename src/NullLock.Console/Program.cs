@@ -15,7 +15,8 @@ namespace NullLock {
 
     class Program {
         static async Task Main(string[] args) {
-            var project = LoadProject("/Users/wk/Source/NullLock/tests/MyApp/MyApp.csproj");
+            var path = args[0];
+            var project = LoadProject(path);
 
             var analyzers = GetAllAnalyzers();
             foreach (var item in analyzers) {
@@ -40,7 +41,8 @@ namespace NullLock {
         static ImmutableArray<DiagnosticAnalyzer> GetAllAnalyzers() {
             var builder = ImmutableArray.CreateBuilder<DiagnosticAnalyzer>();
             var list = new List<DiagnosticAnalyzer> {
-                new UseFSharpAnalyzer()
+                // new UseFSharpAnalyzer(),
+                new LockNullAnalyzer()
             };
             builder.AddRange(list);
             return builder.ToImmutable();

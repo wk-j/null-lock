@@ -1,8 +1,10 @@
 using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
+using System;
 
 namespace NullLock {
+
 
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class UseFSharpAnalyzer : DiagnosticAnalyzer {
