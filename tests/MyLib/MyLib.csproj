@@ -1,11 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <ItemGroup>
     <ProjectReference Include="..\..\src\NullLock\NullLock.csproj" />
   </ItemGroup>
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <CodeAnalysisRuleSet>$(ProjectDir)global.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-
 </Project>
