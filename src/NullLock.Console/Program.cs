@@ -38,11 +38,11 @@ namespace NullLock {
         }
 
         static ImmutableArray<DiagnosticAnalyzer> GetAllAnalyzers() {
-            var assembly = typeof(Program).Assembly;
-            var type = typeof(DiagnosticAnalyzer);
             var builder = ImmutableArray.CreateBuilder<DiagnosticAnalyzer>();
-            var types = assembly.GetTypes().Where(type.IsAssignableFrom).Select(x => (DiagnosticAnalyzer)Activator.CreateInstance(x));
-            builder.AddRange(types);
+            var list = new List<DiagnosticAnalyzer> {
+                new UseFSharpAnalyzer()
+            };
+            builder.AddRange(list);
             return builder.ToImmutable();
         }
 

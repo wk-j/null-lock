@@ -11,7 +11,7 @@ namespace NullLock {
             new DiagnosticDescriptor(
                 "UseFSharpAnalyzer",
                 "Use F#",
-                "You are using C#; Try F# insead",
+                "You are using C# use F# insead",
                 "Lanuage Choice",
                 DiagnosticSeverity.Warning,
                 isEnabledByDefault: true,
