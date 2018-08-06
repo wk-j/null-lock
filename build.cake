@@ -12,15 +12,28 @@ var info = Parser.Parse($"src/{name}/{name}.csproj");
 
 Task("Pack").Does(() => {
     CleanDirectory("publish");
-    DotNetCorePack($"src/{name}", new DotNetCorePackSettings {
+    var settings = new DotNetCorePackSettings {
         OutputDirectory = "publish"
-    });
+    };
+    DotNetCorePack($"src/{name}", settings);
+    DotNetCorePack($"src/NullLock", settings);
 });
 
-Task("Publish-NuGet")
+Task("Publish-Analyzer")
     .IsDependentOn("Pack")
     .Does(() => {
-        var nupkg = new DirectoryInfo("publish").GetFiles("*.nupkg").LastOrDefault();
+        var nupkg = new DirectoryInfo("publish").GetFiles("*Analyzer*.nupkg").LastOrDefault();
+        var package = nupkg.FullName;
+        NuGetPush(package, new NuGetPushSettings {
+            Source = "https://www.nuget.org/api/v2/package",
+            ApiKey = npi
+        });
+});
+
+Task("Publish-Console")
+    .IsDependentOn("Pack")
+    .Does(() => {
+        var nupkg = new DirectoryInfo("publish").GetFiles("*Console*.nupkg").LastOrDefault();
         var package = nupkg.FullName;
         NuGetPush(package, new NuGetPushSettings {
             Source = "https://www.nuget.org/api/v2/package",
