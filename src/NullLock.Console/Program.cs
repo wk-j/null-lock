@@ -17,14 +17,8 @@ namespace NullLock {
         static async Task Main(string[] args) {
             var path = args[0];
             var project = LoadProject(path);
-
             var analyzers = GetAllAnalyzers();
-            foreach (var item in analyzers) {
-                Console.WriteLine("~ {0}", item.ToString());
-            }
-
             var diagonostics = await GetProjectAnalyzerDiagnosticsAsync(project, analyzers);
-
             foreach (var item in diagonostics) {
                 Console.WriteLine("! {0}", item);
             }
