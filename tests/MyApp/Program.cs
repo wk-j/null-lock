@@ -2,13 +2,11 @@
 
 namespace MyApp {
     class Program {
-
-        static void LockNull() {
+        static void A() {
             lock (null) {
-                Console.WriteLine("Bug ...");
+                Console.WriteLine("This is ...");
             }
         }
-
         static void Main(string[] args) {
             Console.WriteLine("Hello World!");
         }

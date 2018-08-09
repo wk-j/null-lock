@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="Global Ruleset" ToolsVersion="15.0">
-  <Rules AnalyzerId="NullLock" RuleNamespace="NullLock">
-    <Rule Id="P911" Action="Error" />
-  </Rules>
-</RuleSet>

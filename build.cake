@@ -16,8 +16,19 @@ Task("Pack").Does(() => {
         OutputDirectory = "publish"
     };
     DotNetCorePack($"src/{name}", settings);
-    DotNetCorePack($"src/NullLock", settings);
+    DotNetCorePack($"src/NullLockAnalyzer", settings);
 });
+
+Task("Publish-Local")
+    .IsDependentOn("Pack")
+    .Does(() => {
+        var nupkg = new DirectoryInfo("publish").GetFiles("wk.NullLockAnalyzer*.nupkg").LastOrDefault();
+        var package = nupkg.FullName;
+        NuGetPush(package, new NuGetPushSettings {
+            Source = "http://bcircle2.asuscomm.com:7777/nuget",
+            ApiKey = EnvironmentVariable("nuget")
+        });
+    });
 
 Task("Publish-Analyzer")
     .IsDependentOn("Pack")
